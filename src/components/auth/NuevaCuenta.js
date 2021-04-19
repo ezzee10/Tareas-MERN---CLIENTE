@@ -16,7 +16,6 @@ const NuevaCuenta = (props) => {
 
     useEffect(() => {
         if (autenticado) {
-            console.log(props.history);
             props.history.push('/proyectos');
         }
 

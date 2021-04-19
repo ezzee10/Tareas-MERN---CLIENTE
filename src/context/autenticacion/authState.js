@@ -27,10 +27,8 @@ const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, inititalState);
 
     const registrarUsuario = async datos => {
-        console.log(datos);
         try {
             const respuesta = await clienteAxios.post('/api/usuarios', datos);
-            console.log(respuesta);
             dispatch({
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data
@@ -83,7 +81,6 @@ const AuthState = props => {
             //OBTENER EL USUARIO
             usuarioAutenticado();
         } catch (error) {
-            console.log(error.response.data.msg);
             const alerta = {
                 msg: error.response.data.msg,
                 categoria: 'alerta-error'

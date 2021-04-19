@@ -29,30 +29,24 @@ const TareaState = props => {
     // Obtener las tareas de un proyecto
     const obtenerTareas = async proyecto => {
 
-        //console.log(proyecto);
-
         try {
             const resultado = await clienteAxios.get('/api/tareas', { params: { proyecto } });
             dispatch({
                 type: TAREAS_PROYECTO,
                 payload: resultado.data.tareas
             })
-        } catch (error) {
-            console.log(error)
-        }
+        } catch (error) {}
     }
 
     // Agregar una tarea al proyecto seleccionado
     const agregarTarea = async tarea => {
         try {
-            await clienteAxios.post('/api/tareas', tarea);
+            const resultado = await clienteAxios.post('/api/tareas', tarea);
             dispatch({
                 type: AGREGAR_TAREA,
-                payload: tarea
+                payload: resultado.data.tarea
             })
-        } catch (error) {
-            console.log(error);
-        }
+        } catch (error) {}
     }
 
     //Valida y muestra un error en caso de que sea necesario
@@ -64,16 +58,13 @@ const TareaState = props => {
 
     //Eliminar tarea por id
     const eliminarTarea = async (id, proyecto) => {
-        //console.log(proyecto);
         try {
             await clienteAxios.delete(`/api/tareas/${id}`, { params: { proyecto } });
             dispatch({
                 type: ELIMINAR_TAREA,
                 payload: id
             })
-        } catch (error) {
-            console.log(error);
-        }
+        } catch (error) {}
     }
 
     //Edita o modifica una tarea
@@ -86,9 +77,7 @@ const TareaState = props => {
                 type: ACTUALIZAR_TAREA,
                 payload: resultado.data.tarea
             })
-        } catch (error) {
-            console.log(error);
-        }
+        } catch (error) {}
     }
 
 

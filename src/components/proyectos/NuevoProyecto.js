@@ -22,7 +22,6 @@ const NuevoProyecto = () => {
             [e.target.name]: e.target.value
 
         })
-        console.log(e.target.name);
     }
 
     // Cuando el usuario envia un proyecto
